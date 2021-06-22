@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Creative portfolio description" />
+  <meta name="keywords" content="Portfolio, Sneak, Test" />
+  <meta name="author" content="Juan Marcon" />
+
+  <link rel="icon" href="img/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/global.min.css" />
+  <link rel="stylesheet" href="css/utils.min.css" />
+  <link rel="stylesheet" href="css/style.min.css" />
+  <title>Sneak - Creative portfolio</title>
+</head>
+
+<body>
+  <main>
+    <header>
+      <nav>
+        <div class="nav-icon">
+          <img src="img/logo.png" width="150" height="62" alt="Sneak logo" />
+        </div>
+        <i role="button" id="bar" class="
+              fas
+              fa-bars
+              d-lg-none d-md-block
+              text-grey
+              hover-text-primary
+            "></i>
+        <ul class="nav-items responsive" id="bar-container">
+          <li class="nav-item active"><a>All</a></li>
+          <li class="nav-item"><a>Branding</a></li>
+          <li class="nav-item"><a>Web</a></li>
+          <li class="nav-item"><a>Photography</a></li>
+          <li class="nav-item"><a>App</a></li>
+          <li class="nav-item-icon d-none d-lg-block">
+            <i class="fa fa-search inherit-text"></i>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section class="home-content">
+      <h1 class="title">Explore beyond horizontal</h1>
+      <h3 class="subtitle">
+        Magna mundi referrentur quo, no rebum dignissim qui. <br />
+        Per quodsi accusata id, agam labores.
+      </h3>
+      <a class="button" href="#portfolio">View out work</a>
+    </section>
+    <section class="portfolio-content" id="portfolio">
+      <div class="text-center container-icons" id="views">
+        <i role="tab" data-value="grid" class="view fas fa-th-large"></i>
+        <i role="tab" data-value="list" class="view fas fa-th-list"></i>
+      </div>
+      <ul class="nav-items m-30" id="filters">
+        <li role="tab" data-value="all" class="filter nav-item">All</li>
+        <li role="tab" data-value="branding" class="filter nav-item">
+          Branding
+        </li>
+        <li role="tab" data-value="web" class="filter nav-item">Web</li>
+        <li role="tab" data-value="photography" class="filter nav-item">
+          Photography
+        </li>
+        <li role="tab" data-value="app" class="filter nav-item">App</li>
+      </ul>
+
+      <div class="portfolio-grid" id="images">
+        <div class="portfolio-grid-item item-1">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-2">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-3">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-4">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-5">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-6">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-7">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-8">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-9">
+          <div class="pulse"></div>
+        </div>
+        <div class="portfolio-grid-item item-10">
+          <div class="pulse"></div>
+        </div>
+      </div>
+      <a class="more-button m-30"> show me more</a>
+    </section>
+    <footer>
+      <p class="text-center text-grey m-20">
+        © 2016 -
+        <a class="text-primary hover-text-secondary">Sneak</a>
+        All Rights Reserved
+      </p>
+      <p class="text-center container-icons">
+        <a href="https://facebook.com" target="_blank" class="hover-text-primary"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank" class="hover-text-primary"><i class="fab fa-twitter"></i></a>
+        <a href="https://dribbble.com" target="_blank" class="hover-text-primary"><i class="fab fa-dribbble"></i></a>
+        <a href="https://google.com" target="_blank" class="hover-text-primary"><i class="fab fa-google-plus-g"></i></a>
+        <a href="https://youtube.com" target="_blank" class="hover-text-primary"><i class="fab fa-youtube"></i></a>
+      </p>
+    </footer>
+  </main>
+
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+* {
+  font-family: "Montserrat", "Questrial";
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+i {
+  color: #c2cfd7;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  position: relative;
+  margin: 0px 60px;
+}
+
+footer {
+  margin: 30px;
+  font-size: 12px;
+}
+
+button {
+  border: 0;
+}
+
+section {
+  padding: 30px 20px;
+}
+
+[role="tab"],
+[role="button"] {
+  cursor: pointer;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
