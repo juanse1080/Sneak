@@ -15,12 +15,15 @@ const defaultData = [
 ]
 
 async function loadData() {
-  const images = await getImages(requestUrl.replace('london', defaultData[0].portfolio))
+  setData(defaultData)
 
-  update({ portfolio: defaultData[0].portfolio }, document.getElementById('filters').querySelector(`[data-value="${defaultData[0].portfolio}"]`))
+  const { portfolio, view } = defaultData[0]
 
-  update({ view: defaultData[0].view }, document.getElementById('views').querySelector(`[data-value="${defaultData[0].view}"]`))
-  console.log(document.getElementById('views'), document.getElementById('views').querySelector(`[data-value="${defaultData[0].view}"]`), defaultData[0].portfolio, defaultData[0].view)
+  const images = await getImages(requestUrl.replace('london', portfolio))
+
+  update({ portfolio }, document.getElementById('filters').querySelector(`[data-value="${portfolio}"]`))
+
+  update({ view }, document.getElementById('views').querySelector(`[data-value="${view}"]`))
   pushImage(images)
 }
 
@@ -30,8 +33,7 @@ function loadEvents() {
   for (let index = 0; index < filters.length; index++) {
     filters[index].addEventListener("click", async function (e) {
       const { value } = e.target.dataset
-      const data = getData(0)
-      update({ ...data, portfolio: value }, e.target)
+      update({ portfolio: value }, e.target)
       const images = await getImages(requestUrl.replace('london', value))
       pushImage(images)
     })
@@ -42,8 +44,7 @@ function loadEvents() {
   for (let index = 0; index < views.length; index++) {
     views[index].addEventListener("click", function (e) {
       const { value } = e.target.dataset
-      const data = getData(0)
-      update({ ...data, view: value }, e.target)
+      update({ view: value }, e.target)
     })
   }
 
@@ -69,25 +70,13 @@ async function getImages(url) {
     });
 }
 
-function getData(position, key) {
+function getData() {
   const data = JSON.parse(localStorage.getItem("data"));
-  if (position && key) return key[position][key];
-  else if (position) return key[position];
-  return key ? data[key] : data;
+  return data;
 }
 
-function setData(value, position, key) {
-  if (position && key) {
-    let beforeData = localStorage.getItem("data");
-    beforeData[position] = { ...beforeData[position], [key]: value };
-    localStorage.setItem("data", JSON.stringify(beforeData));
-  } else if (position) {
-    let beforeData = localStorage.getItem("data");
-    beforeData[position] = { ...beforeData[position], ...value };
-    localStorage.setItem("data", JSON.stringify(beforeData));
-  } else {
-    localStorage.setItem("data", JSON.stringify(value));
-  }
+function setData(value) {
+  localStorage.setItem("data", JSON.stringify(value));
 }
 
 function updateUrlParameter(uri, key, value) {
@@ -113,39 +102,34 @@ function updateUrlParameter(uri, key, value) {
 }
 
 function update(newData, target) {
-  let { portfolio, view } = getData(0);
+  let data = getData();
   let { portfolio: newPortfolio, view: newView } = newData;
   let url = window.location.toString();
+  const hash = window.location.hash || data[0].hash
 
-  console.log(target)
+  data[0].hash = hash
 
-  if (portfolio === newPortfolio && view === newView) {
-    return;
-  }
-
-  if (portfolio !== newPortfolio) {
+  if (newPortfolio) {
     url = updateUrlParameter(url, "portfolio", newPortfolio);
-    changeActive(document.getElementById("filters"), "portfolio", target);
+    changeActive(document.getElementById("filters"), target);
+    data[0].portfolio = newPortfolio;
   }
 
-  if (view !== newView) {
+  if (newView) {
     url = updateUrlParameter(url, "view", newView);
-    changeActive(document.getElementById("views"), "view", target);
+    changeActive(document.getElementById("views"), target);
+    data[0].view = newView;
   }
 
-  const data = [
-    {
-      hash: window.location.hash,
-      portfolio: newPortfolio,
-      view: newView,
-    },
-    "page " + window.location.hash,
+  const temp = [
+    data[0],
+    "page " + hash,
     url,
   ]
 
-  setData(data);
+  setData(temp);
 
-  history.pushState(...data);
+  history.pushState(...temp);
 }
 
 function pushImage(images) {
@@ -172,12 +156,8 @@ function loading() {
   root.innerHTML = content;
 }
 
-function changeActive(root, key, target) {
+function changeActive(root, target) {
   const selected = root.querySelector(".active");
-
-  if (selected && selected.dataset.value === getData(0, key)) {
-    return;
-  }
 
   if (selected) {
     selected.ariaSelected = "false";
